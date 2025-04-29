@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+head{
+  font-family: SF Pro Display, sans-serif;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(-20deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(-20deg);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+.light-bg {
+  background: url("./assets/nightDay2.png") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+}
+.dark-bg {
+  background: url("./assets/nightNight2.png") no-repeat center center fixed; 
+ 
+  
+  font-family: SF Pro Display, sans-serif;
+}
+
+
+/* From SkyScope */
+.header-gradient {
+  background-image:linear-gradient(180deg, rgba(7,177,253,0.5159313725490196) 0%, rgba(3,162,252,0.5579481792717087) 22%, rgba(2,151,251,0.5467436974789917) 41%, rgba(0,112,235,0.5215336134453781) 72%, rgba(2,88,187,0.46551120448179273) 83%, rgba(4,67,144,0.5187324929971988) 92%, rgba(6,48,105,0.5327380952380952) 97%, rgba(8,16,41,0.9613095238095238) 100%);
+  background-position: top,center;
+  background-repeat: no-repeat,repeat; 
+  background-size:100%,cover;
+  background-attachment: scroll,fixed;
+}
+
+.dark__gradient__text {
+  background: linear-gradient(99.03deg, rgba(41,156,238,1) 0%, rgba(2,44,74,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  transition: 0.5s;
+}
+
+.dark__gradient__text:hover {
+  background-position: right center;
+}
+.reversed__dark__gradient__text {
+  background: linear-gradient(99.03deg, rgba(2,44,74,1) 0%, rgba(41,156,238,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.gradient__card{
+  background: rgb(12,74,110);
+  background: linear-gradient(90deg, rgba(12,74,110,1) 0%, rgba(7,89,133,1) 14%, rgba(3,105,161,1) 25%, rgba(2,132,199,1) 47%, rgba(14,165,233,1) 64%, rgba(56,189,248,1) 76%, rgba(56,189,248,1) 79%, rgba(125,211,252,1) 94%, rgba(186,230,253,1) 100%);
+}
+.gradient__card180{
+  background: rgb(12,74,110);
+  background: linear-gradient(180deg, rgba(12,74,110,1) 0%, rgba(7,89,133,1) 14%, rgba(3,105,161,1) 25%, rgba(2,132,199,1) 47%, rgba(14,165,233,1) 64%, rgba(56,189,248,1) 76%, rgba(56,189,248,1) 79%, rgba(125,211,252,1) 94%, rgba(186,230,253,1) 100%);
+}
+.gradient__card145{
+  background: rgb(12,74,110);
+  background: linear-gradient(145deg, rgba(12,74,110,1) 0%, rgba(7,89,133,1) 14%, rgba(3,105,161,1) 25%, rgba(2,132,199,1) 47%, rgba(14,165,233,1) 64%, rgba(56,189,248,1) 76%, rgba(56,189,248,1) 79%, rgba(125,211,252,1) 94%, rgba(186,230,253,1) 100%);
+}
+
+.simple__text{
+  font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: #81AFDD;
+    margin-top: 1.5rem; 
+}
+.btn-grad {background-image: linear-gradient(to right, #ffb347 0%, #ffcc33  51%, #ffb347  100%)}
+.btn-grad {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+ }
+
+ .btn-grad:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+ .text-grad {
+  background-image: linear-gradient(to right, #d4af37 0%, #ffcc33 50%, #ffd700 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: 0.5s;
+}
+
+
+.text-grad:hover {
+  background-position: right center;
+  text-decoration: none;
+}
+ .text-grad2 {
+  background-image: linear-gradient(to right, #ffb347 0%, #ffcc33 51%, #ffb347 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: 0.5s;
+}
+
+.text-grad2:hover {
+  background-position: right center;
+  text-decoration: none;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+      }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+@layer components {
+  .dark .light__gradient__text {
+    @apply text-transparent;
+    color: transparent;
+    background: linear-gradient(99.03deg, #FDFDFD 2.61%, #67B9F4 53.12%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 200% auto;
+    transition: 0.5s;
+  }
+  
+  .dark .light__gradient__text:hover {
+    background-position: right center;
+  }
+  .dark .reversed__light__gradient__text {
+    @apply text-transparent;
+    background: linear-gradient(99.03deg, #67B9F4 2.61%,#FDFDFD 53.12%);
+      -webkit-background-clip: text;
+      background-clip: text;
+  }
+  
+}

@@ -1,0 +1,154 @@
+/* styles/mdx.css */
+/* Basic typography */
+.prose {
+  @apply max-w-4xl mx-auto text-gray-800 dark:text-gray-200;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply font-bold font-merriweather tracking-tight scroll-m-20;
+}
+
+.prose h1 {
+  @apply text-6xl mt-8 mb-4 no-underline;
+}
+
+.prose h2 {
+  @apply text-4xl mt-10 mb-4;
+}
+
+.prose h3 {
+  @apply text-2xl mt-8 mb-4;
+}
+
+.prose h4 {
+  @apply text-xl mt-6 mb-3;
+}
+
+.prose p {
+  @apply my-6 leading-7;
+}
+
+/* Links */
+.prose a {
+  @apply text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors no-underline;
+}
+
+/* Lists */
+.prose ul,
+.prose ol {
+  @apply my-6 ml-6;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose ul li::before {
+  @apply text-gray-500 dark:text-gray-400;
+}
+
+/* Images */
+.prose img {
+  @apply rounded-lg border border-gray-200 dark:border-gray-800 my-8;
+}
+
+/* Blockquotes */
+.prose blockquote {
+  @apply border-l-4 border-gray-300 dark:border-gray-700 pl-4 italic my-6;
+}
+
+/* Code blocks */
+.prose pre {
+  @apply p-4 rounded-lg overflow-x-auto text-sm bg-gray-100 dark:bg-gray-800 my-6;
+}
+
+.prose code:not(pre code) {
+  @apply text-sm px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 font-mono;
+}
+
+/* Tables */
+.prose table {
+  @apply w-full border-collapse my-6;
+}
+
+.prose th,
+.prose td {
+  @apply border border-gray-300 dark:border-gray-700 p-2 text-left;
+}
+
+.prose th {
+  @apply bg-gray-100 dark:bg-gray-800 font-semibold;
+}
+
+/* Horizontal rule */
+.prose hr {
+  @apply my-8 border-gray-200 dark:border-gray-800;
+}
+
+/* Code highlighting (rehype-pretty-code) */
+[data-rehype-pretty-code-figure] {
+  @apply my-6;
+}
+
+[data-rehype-pretty-code-figure] pre {
+  @apply px-0 overflow-x-auto;
+}
+
+[data-rehype-pretty-code-figure] code {
+  @apply text-sm !leading-loose md:text-base border-0 p-0;
+}
+
+[data-rehype-pretty-code-figure] code[data-line-numbers] {
+  counter-reset: line;
+}
+
+[data-rehype-pretty-code-figure] code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  @apply mr-4 inline-block w-4 text-right text-gray-500;
+}
+
+[data-rehype-pretty-code-figure] [data-line] {
+  @apply border-l-2 border-l-transparent px-3;
+}
+
+[data-rehype-pretty-code-figure] [data-highlighted-line] {
+  background: rgba(200, 200, 255, 0.1);
+  @apply border-l-blue-400;
+}
+
+[data-rehype-pretty-code-figure] [data-highlighted-chars] {
+  @apply rounded bg-zinc-600/50;
+  box-shadow: 0 0 0 4px rgb(82 82 91 / 0.5);
+}
+
+[data-rehype-pretty-code-figure] [data-chars-id] {
+  @apply border-b-2 p-1 shadow-none;
+}
+
+/* Subheading anchors */
+.subheading-anchor {
+  @apply no-underline hover:underline;
+}
+
+/* Custom callouts */
+.callout {
+  @apply p-4 my-6 border-l-4 rounded-r-lg;
+}
+
+.callout-default {
+  @apply bg-gray-50 border-gray-500 dark:bg-gray-900 dark:border-gray-500/50;
+}
+
+.callout-info {
+  @apply bg-blue-50 border-blue-500 dark:bg-blue-950/30 dark:border-blue-500/50;
+}
+
+.callout-warning {
+  @apply bg-amber-50 border-amber-500 dark:bg-amber-950/30 dark:border-amber-500/50;
+}
