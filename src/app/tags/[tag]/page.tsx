@@ -1,45 +1,46 @@
-// src/app/tags/[tag]/page.tsx
-import { getAllPosts } from "@/lib/blogs";
+import { getAllPosts } from '@/lib/blogs';
 import {
   getAllTagsFromPosts,
   getPostsByTagSlug,
   sortTagsByCount,
-} from "@/lib/utils";
-import { Tag } from "@/components/Tag";
-import { slug as slugify } from "github-slugger";
-import type { Metadata } from "next";
+} from '@/lib/utils';
+import { Tag } from '@/components/Tag';
+import { slug as slugify } from 'github-slugger';
+import type { Metadata } from 'next';
 
-type TagParamsPromise = Promise<{ tag: string }>;
+type Params = { tag: string };
 
+/* ── dynamic <head> data ───────────────────────── */
 export async function generateMetadata(
-  { params }: { params: TagParamsPromise }
+  { params }: { params: Params },
 ): Promise<Metadata> {
-  const { tag } = await params;
-  const plain = tag.replaceAll("-", " ");
+  const plain = params.tag.replaceAll('-', ' ');
   return {
     title: `Posts tagged “${plain}”`,
     description: `All posts on ${plain}`,
   };
 }
 
-export const generateStaticParams = () => {
-  const tags = getAllTagsFromPosts(getAllPosts());
-  return Object.keys(tags).map((t) => ({ tag: slugify(t) }));
+/* ── paths for SSG ──────────────────────────────── */
+export const generateStaticParams = async () => {
+  const allPosts = await getAllPosts();
+  const tagsRec  = getAllTagsFromPosts(allPosts);
+  return Object.keys(tagsRec).map((t) => ({ tag: slugify(t) }));
 };
 
-export default async function TagPage(
-  { params }: { params: TagParamsPromise }
-) {
-  const { tag } = await params;
+/* ── page itself ────────────────────────────────── */
+export default async function TagPage({ params }: { params: Params }) {
+  const { tag }   = params;
+  const allPosts  = await getAllPosts();
 
-  const posts     = getPostsByTagSlug(getAllPosts(), tag).filter(p => p.published);
-  const tagRecord = getAllTagsFromPosts(getAllPosts());
+  const posts     = getPostsByTagSlug(allPosts, tag).filter((p) => p.published);
+  const tagRecord = getAllTagsFromPosts(allPosts);
   const sorted    = sortTagsByCount(tagRecord);
 
   return (
     <div className="container max-w-4xl py-6 lg:py-10">
       <h1 className="font-black text-3xl mb-6">
-        Posts tagged “{tag.replaceAll("-", " ")}”
+        Posts tagged “{tag.replaceAll('-', ' ')}”
       </h1>
 
       <ul className="space-y-4 mb-12">

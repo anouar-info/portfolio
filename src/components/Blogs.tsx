@@ -1,44 +1,27 @@
-"use client";
-import Link from "next/link";
-import React, { useState, useEffect } from "react";
-import BlogCard from "@/components/BlogCard";
-import { getAllPosts } from "@/lib/blogs";
+'use client';
 
-/**
- * Example homepage section with 4 posts fetched dynamically from Velite.
- * If you add more MDX files to your content, getAllPosts will retrieve them.
- */
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import BlogCard from '@/components/BlogCard';
+import { getAllPosts, BlogPost } from '@/lib/blogs';
+
 const Blogs: React.FC = () => {
-  interface BlogPost {
-    slug: string;
-    slugAsParams: string;
-    title: string;
-    description?: string;
-    date?: string;
-    body: string;
-    image?: string;
-    readTime?: number;
-  }
-
   const [blogData, setBlogData] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchPosts() {
+    (async () => {
       try {
-        setIsLoading(true);
-        setError(null);
         const posts = await getAllPosts();
-        setBlogData(posts.slice(0, 4));
+        setBlogData(posts.slice(0, 4));   // still 4-item preview
       } catch (err) {
-        setError("Failed to load blog posts. Please try again later.");
-        console.error("Error fetching blog posts:", err);
+        setError('Failed to load blog posts. Please try again later.');
+        console.error(err);
       } finally {
         setIsLoading(false);
       }
-    }
-    fetchPosts();
+    })();
   }, []);
 
   return (

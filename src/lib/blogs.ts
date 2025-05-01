@@ -1,7 +1,7 @@
 // src/lib/blogs.ts
-import { posts } from "../../.velite";
-import { sortByDate, collectTags } from "./utils";
+import { fetchBlogPosts, fetchBlogPost } from './github';
 
+/** A post coming from GitHub (or later from Velite if you mix both) */
 export interface BlogPost {
   slug: string;
   slugAsParams: string;
@@ -10,35 +10,28 @@ export interface BlogPost {
   date?: string;
   published: boolean;
   tags?: string[];
-  body: string;      // Compiled MDX
+  /** when you list posts you don’t need the body or Component */
+  body?: string;                     // ← for old Velite fallback (optional)
+  Component?: React.ReactElement;    // ← compiled MDX from GitHub
   image?: string;
   readTime?: number;
   key?: string;
 }
 
-
-/**
- * Fetch the latest 4 posts from Velite.
- */
-export async function getLatestsPosts(): Promise<BlogPost[]> {
-/*   const allPosts = posts
-    .filter((post: BlogPost) => post.published !== false)
-    .sort((a: BlogPost, b: BlogPost) => {
-      const dateA = a.date ? new Date(a.date).getTime() : 0;
-      const dateB = b.date ? new Date(b.date).getTime() : 0;
-      return dateB - dateA;
-    }); */
-  
-  return posts.slice(0, 4);
-
+/* ------------ thin wrappers around github.ts ------------ */
+export async function getAllPosts(): Promise<BlogPost[]> {
+  return fetchBlogPosts();
 }
-
-export function getAllPosts() {
-  return sortByDate(posts).filter((p) => p.published);
+export async function getPostBySlug(
+  slug: string,
+): Promise<BlogPost | null> {
+  return fetchBlogPost(slug);
 }
-export function getLatestPosts(n = 4) {
-  return getAllPosts().slice(0, n);
+export async function getLatestPosts(n = 4) {
+  return (await getAllPosts()).slice(0, n);
 }
-export function getAllTags() {
-  return collectTags(getAllPosts());
+export async function getAllTags() {
+  const set = new Set<string>();
+  (await getAllPosts()).forEach((p) => p.tags?.forEach((t) => set.add(t)));
+  return Array.from(set).sort();
 }

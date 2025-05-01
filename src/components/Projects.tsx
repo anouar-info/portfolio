@@ -1,42 +1,27 @@
-// src/components/Projects.tsx
-"use client";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import ProjectCard from "@/components/ProjectCard";
-import { getAllProjects } from "@/lib/projects";
+'use client';
+
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import ProjectCard from '@/components/ProjectCard';
+import { getAllProjects, Project } from '@/lib/projects';
 
 const Projects: React.FC = () => {
-  // Four imaginary projects
-  interface Project {
-    slug: string;
-    slugAsParams: string;
-    title: string;
-    description?: string;
-    date?: string;
-    tags?: string[];
-    body: string;
-    image?: string;
-  }
   const [projectData, setProjectData] = useState<Project[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [isLoading,  setIsLoading]  = useState(true);
+  const [error,      setError]      = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchProjects() {
+    (async () => {
       try {
-        setIsLoading(true);
-        setError(null);
-        const posts = await getAllProjects();
-        // Limit to 4 posts maximum
-        setProjectData(posts.slice(0, 4));
+        const projects = await getAllProjects();
+        setProjectData(projects.slice(0, 4));
       } catch (err) {
-        setError("Failed to load projects. Please try again later.");
-        console.error("Error fetching projects:", err);
+        setError('Failed to load projects. Please try again later.');
+        console.error(err);
       } finally {
         setIsLoading(false);
       }
-    }
-    fetchProjects();
+    })();
   }, []);
 
   return (
