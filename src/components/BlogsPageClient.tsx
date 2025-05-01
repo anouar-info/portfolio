@@ -16,9 +16,9 @@ export interface BlogPost {
   readTime?: number;
 }
 
-interface BlogsPageClientProps {
-  posts: BlogPost[];
-  tags: string[];
+export interface BlogsPageClientProps {
+  posts: Awaited<ReturnType<typeof import('@/lib/blogs').getAllPosts>>;
+  tags:  Awaited<ReturnType<typeof import('@/lib/blogs').getAllTags>>;
 }
 
 /**

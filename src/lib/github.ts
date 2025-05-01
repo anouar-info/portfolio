@@ -14,10 +14,10 @@ const headers = {
 };
 
 /* ---------- Local types ---------- */
-interface RemoteBlogPost extends Omit<BlogPost, 'body'> {
-  /** Pre-compiled MDX element ready to render */
+interface RemoteBlogPost extends Omit<BlogPost, 'body' | 'Component'> {
   Component: React.ReactElement;
 }
+
 
 /* ---------- GitHub helpers ---------- */
 async function fetchFromGitHub(path: string) {

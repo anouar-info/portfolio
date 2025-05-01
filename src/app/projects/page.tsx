@@ -7,10 +7,8 @@ export const metadata: Metadata = {
   description: "Browse all projects",
 };
 
-/**
- * Server component – sends the static list
- * down to a (now much smaller) client component.
- */
-export default function ProjectsPage() {
-  return <ProjectsPageClient projects={getAllProjects()} />;
+
+export default async function ProjectsPage() {
+  const projects = await getAllProjects(); // Fetch all projects
+  return <ProjectsPageClient projects={projects} />;
 }

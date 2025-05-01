@@ -8,8 +8,9 @@ export const metadata: Metadata = {
   description: "Topics I've written about",
 };
 
-export default function TagsPage() {
-  const tagsRecord = getAllTagsFromPosts(getAllPosts());      // posts ⇒ record {"react": 3, …}
+export default async function TagsPage() {
+  const posts = await getAllPosts();
+  const tagsRecord = getAllTagsFromPosts(posts);      // posts ⇒ record {"react": 3, …}
   const sorted = sortTagsByCount(tagsRecord);        // ["react","css",…]
 
   return (
