@@ -1,43 +1,54 @@
-
 import Link from "next/link";
 import React from "react";
+
 export interface BlogCardProps {
   slug: string;
   slugAsParams: string;
   title: string;
   description?: string;
   date?: string;
-  tags?: string[];
   readTime?: number;
 }
 
-export default function BlogCard(props: BlogCardProps) {
-  const { slugAsParams,title,description,date,readTime } = props;
+export default function BlogCard({
+  slugAsParams,
+  title,
+  description,
+  date,
+  readTime,
+}: BlogCardProps) {
   return (
-    <div className="flex flex-col bg-ocean/50 dark:bg-sky-600/50 backdrop-blur-lg shadow-lg rounded-lg overflow-hidden transition-transform transform hover:-translate-y-1 border border-white/30">
-    {/* {image && (
-        <Image
-          src={image}
-          alt={title}
-          width={500}
-          height={260}
-          className="w-full h-auto object-cover"
-        />
-      )} */}
-      <div className="p-4">
-        <h3 className="text-lg font-semibold text-gold mb-2">{title}</h3>
-        <p className="text-xs text-blue-100 dark:text-black font-bold mb-2">
-          {date && new Date(date).toLocaleDateString()}{" "}
-          {readTime && `• ${readTime} min read`}
-        </p>
-        <p className="text-lightBlue dark:text-white mb-3">{description}</p>
+    <article className="relative flex flex-col bg-sky-50 bg-opacity-30 dark:bg-sky-700 dark:bg-opacity-40 backdrop-blur-lg rounded-2xl border-t-4 border-sky-600 dark:border-sky-50 shadow-xl overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+      {/*
+      <Image
+        src={image}
+        alt={title}
+        width={500}
+        height={260}
+        className="w-full h-auto object-cover"
+      />
+      */}
+      <div className="p-6 flex flex-col h-full">
+        <h3 className="text-2xl font-bold text-sky-700 dark:text-sky-100 mb-3">{title}</h3>
+        <div className="flex items-center text-sm text-sky-500 mb-4">
+          {date && (
+            <time dateTime={date} className="underline decoration-dotted">
+              {new Date(date).toLocaleDateString()}
+            </time>
+          )}
+          {readTime && <span className="mx-2">•</span>}
+          {readTime && <span>{readTime} min read</span>}
+        </div>
+        {description && (
+          <p className="text-base text-sky-800 dark:text-gray-300 flex-grow font-bold">{description}</p>
+        )}
         <Link
           href={`/blog/${slugAsParams}`}
-          className="text-blue-600 dark:text-blue-900 font-medium hover:underline"
+          className="mt-4 inline-flex items-center text-gold2 dark:text-gold3 hover:text-blue-800 dark:hover:text-sky-50  font-medium"
         >
-          Read full article
+          Read full article <span aria-hidden="true" className="ml-2 font-extrabold">→</span>
         </Link>
       </div>
-    </div>
+    </article>
   );
-};
+}

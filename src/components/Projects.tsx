@@ -1,22 +1,23 @@
-// src/components/Projects.tsx
 "use client";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import ProjectCard from "@/components/ProjectCard";
 import { getAllProjects } from "@/lib/projects";
+import { CTA } from "@/components/CTA";
+import { FaArrowRight } from "react-icons/fa";
+
+interface Project {
+  slug: string;
+  slugAsParams: string;
+  title: string;
+  description?: string;
+  date?: string;
+  tags?: string[];
+  body: string;
+  image?: string;
+}
 
 const Projects: React.FC = () => {
-  // Four imaginary projects
-  interface Project {
-    slug: string;
-    slugAsParams: string;
-    title: string;
-    description?: string;
-    date?: string;
-    tags?: string[];
-    body: string;
-    image?: string;
-  }
   const [projectData, setProjectData] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -27,7 +28,6 @@ const Projects: React.FC = () => {
         setIsLoading(true);
         setError(null);
         const posts = await getAllProjects();
-        // Limit to 4 posts maximum
         setProjectData(posts.slice(0, 4));
       } catch (err) {
         setError("Failed to load projects. Please try again later.");
@@ -42,21 +42,21 @@ const Projects: React.FC = () => {
   return (
     <section className="bg-transparent dark:bg-transparent py-12 font-space">
       <div className="container mx-auto px-4">
-        <div className="flex items-end justify-between">
-          <h2 className="mr-6 text-2xl md:text-5xl font-bold mb-6 text-oceanLight dark:text-blue-100">
+        <div className="flex items-end justify-between mb-6">
+          <h2 className="mr-6 text-2xl md:text-5xl font-bold text-oceanLight dark:text-blue-100">
             <Link href="/projects">Projects</Link>
           </h2>
-          <Link
+          <CTA
             href="/projects"
-            className="text-blue-600 dark:text-blue-500 font-medium hover:underline"
-          >
-            See All Projects
-          </Link>
+            label="See All Projects"
+            Icon={FaArrowRight}
+            ariaLabel="View all projects"
+          />
         </div>
 
         {isLoading && (
           <div className="flex justify-center items-center min-h-[200px]">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500" />
           </div>
         )}
 
@@ -74,27 +74,17 @@ const Projects: React.FC = () => {
 
         {!isLoading && !error && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-            {projectData.map((project, index) => {
-              const {
-                slug,
-                slugAsParams,
-                title,
-                description,
-                date,
-                tags,
-              } = project;
-              return (
-                <ProjectCard
-                  key={slug || index}
-                  slug={slug}
-                  slugAsParams={slugAsParams}
-                  title={title}
-                  description={description}
-                  date={date}
-                  tags={tags}
-                />
-              );
-            })}
+            {projectData.map((project, index) => (
+              <ProjectCard
+                key={project.slug || index}
+                slug={project.slug}
+                slugAsParams={project.slugAsParams}
+                title={project.title}
+                description={project.description}
+                date={project.date}
+                tags={project.tags}
+              />
+            ))}
           </div>
         )}
       </div>

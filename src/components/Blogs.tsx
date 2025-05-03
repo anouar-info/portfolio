@@ -1,25 +1,23 @@
 "use client";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
 import BlogCard from "@/components/BlogCard";
 import { getAllPosts } from "@/lib/blogs";
+import { CTA } from "@/components/CTA";
+import { FaArrowRight } from "react-icons/fa";
 
-/**
- * Example homepage section with 4 posts fetched dynamically from Velite.
- * If you add more MDX files to your content, getAllPosts will retrieve them.
- */
+interface BlogPost {
+  slug: string;
+  slugAsParams: string;
+  title: string;
+  description?: string;
+  date?: string;
+  body: string;
+  image?: string;
+  readTime?: number;
+}
+
 const Blogs: React.FC = () => {
-  interface BlogPost {
-    slug: string;
-    slugAsParams: string;
-    title: string;
-    description?: string;
-    date?: string;
-    body: string;
-    image?: string;
-    readTime?: number;
-  }
-
   const [blogData, setBlogData] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -48,17 +46,17 @@ const Blogs: React.FC = () => {
           <h2 className="text-2xl md:text-5xl font-bold text-oceanLight dark:text-sky-100">
             <Link href="/blog">Blogs</Link>
           </h2>
-          <Link
+          <CTA
             href="/blog"
-            className="text-blue-600 dark:text-blue-500 font-medium hover:underline"
-          >
-            See All Articles
-          </Link>
+            label="See All Blogs"
+            Icon={FaArrowRight}
+            ariaLabel="View all blog articles"
+          />
         </div>
 
         {isLoading && (
           <div className="flex justify-center items-center min-h-[200px]">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500" />
           </div>
         )}
 
@@ -76,28 +74,17 @@ const Blogs: React.FC = () => {
 
         {!isLoading && !error && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {blogData.map((blog, index) => {
-              const {
-                slug,
-                slugAsParams,
-                title,
-                description,
-                date,
-                readTime,
-              } = blog;
-
-              return (
-                <BlogCard
-                  key={slug || index}
-                  slug={slug}
-                  slugAsParams={slugAsParams}
-                  title={title}
-                  description={description}
-                  date={date}
-                  readTime={readTime}
-                />
-              );
-            })}
+            {blogData.map((blog, index) => (
+              <BlogCard
+                key={blog.slug || index}
+                slug={blog.slug}
+                slugAsParams={blog.slugAsParams}
+                title={blog.title}
+                description={blog.description}
+                date={blog.date}
+                readTime={blog.readTime}
+              />
+            ))}
           </div>
         )}
       </div>

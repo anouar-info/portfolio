@@ -1,4 +1,4 @@
-// app/about/page.tsx
+import Image from "next/image";
 
 export default function AboutPage() {
   return (
@@ -31,9 +31,11 @@ export default function AboutPage() {
           <div className="space-y-8">
             {/* Primary School */}
             <div className="flex flex-col md:flex-row items-center">
-              {/*  <img
+              {/*  <Image
                     src="/assets/primary-school.png"
                     alt="Primary School"
+                    width={128}
+                    height={128}
                     className="w-32 h-32 object-cover mb-4 md:mb-0 md:mr-6"
                   /> */}
               <div>
@@ -48,9 +50,11 @@ export default function AboutPage() {
             </div>
             {/* Middle School */}
             <div className="flex flex-col md:flex-row items-center">
-              {/*   <img
+              {/*   <Image
                     src="/assets/middle-school.png"
                     alt="Middle School"
+                    width={128}
+                    height={128}
                     className="w-32 h-32 object-cover mb-4 md:mb-0 md:mr-6"
                   /> */}
               <div>
@@ -66,9 +70,11 @@ export default function AboutPage() {
             </div>
             {/* High School */}
             <div className="flex flex-col md:flex-row items-center">
-              {/* <img
+              {/* <Image
                     src="/assets/high-school.png"
                     alt="High School"
+                    width={128}
+                    height={128}
                     className="w-32 h-32 object-cover mb-4 md:mb-0 md:mr-6"
                   /> */}
               <div>
@@ -84,9 +90,11 @@ export default function AboutPage() {
             </div>
             {/* Preparatory Classes */}
             <div className="flex flex-col md:flex-row items-center">
-              {/*  <img
+              {/*  <Image
                     src="/assets/preparatory.png"
                     alt="Preparatory Classes"
+                    width={128}
+                    height={128}
                     className="w-32 h-32 object-cover mb-4 md:mb-0 md:mr-6"
                   /> */}
               <div>
@@ -111,9 +119,11 @@ export default function AboutPage() {
           <div className="space-y-8">
             {/* Internship */}
             <div className="flex flex-col md:flex-row items-center">
-              <img
+              <Image
                 src="/assets/internship.png"
                 alt="Internship at TechCorp"
+                width={128}
+                height={128}
                 className="w-32 h-32 object-cover mb-4 md:mb-0 md:mr-6"
               />
               <div>
@@ -129,9 +139,11 @@ export default function AboutPage() {
             </div>
             {/* Part-Time Job */}
             <div className="flex flex-col md:flex-row items-center">
-              <img
+              <Image
                 src="/assets/part-time.png"
                 alt="Part-Time Developer"
+                width={128}
+                height={128}
                 className="w-32 h-32 object-cover mb-4 md:mb-0 md:mr-6"
               />
               <div>
@@ -156,9 +168,11 @@ export default function AboutPage() {
           <div className="space-y-8">
             {/* Hobbies */}
             <div className="flex flex-col md:flex-row items-center">
-              <img
+              <Image
                 src="/assets/hobbies.png"
                 alt="Hobbies & Interests"
+                width={128}
+                height={128}
                 className="w-32 h-32 object-cover mb-4 md:mb-0 md:mr-6"
               />
               <div>
@@ -174,9 +188,11 @@ export default function AboutPage() {
             </div>
             {/* Skills & Certifications */}
             <div className="flex flex-col md:flex-row items-center">
-              <img
+              <Image
                 src="/assets/skills.png"
                 alt="Skills & Certifications"
+                width={128}
+                height={128}
                 className="w-32 h-32 object-cover mb-4 md:mb-0 md:mr-6"
               />
               <div>
