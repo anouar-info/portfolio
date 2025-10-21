@@ -18,7 +18,7 @@ export default function ProjectCard({
   tags,
 }: ProjectCardProps) {
   return (
-    <article className="flex flex-col lg:flex-row bg-white/80 dark:bg-ocean/30 backdrop-blur-md rounded-xl border-l-4 border-ocean dark:border-gold shadow-md hover:shadow-xl transition-shadow duration-300 p-6 gap-6">
+    <article className="flex flex-col lg:flex-row bg-white/80 dark:bg-ocean/30 backdrop-blur-md rounded-xl border-l-4 border-ocean dark:border-sky-50 shadow-md hover:shadow-xl transition-shadow duration-300 p-6 gap-6">
       {/*
       <div className="flex-shrink-0">
         <Image
@@ -32,7 +32,7 @@ export default function ProjectCard({
       */}
 
       <div className="flex flex-col flex-grow">
-        <h3 className="text-2xl font-semibold text-ocean dark:text-gold mb-2">
+        <h3 className="text-2xl font-semibold text-ocean dark:text-blue-200 mb-2">
           {title}
         </h3>
 
@@ -66,7 +66,7 @@ export default function ProjectCard({
 
         <Link
           href={`/projects/${slugAsParams}`}
-          className="self-start inline-block px-4 py-2 bg-ocean text-white rounded-lg font-medium hover:bg-ocean-dark dark:bg-gold dark:text-ocean dark:hover:bg-gold/90 transition-colors duration-200"
+          className="self-start inline-block px-4 py-2 bg-ocean text-white hover:text-gold rounded-lg font-medium hover:bg-ocean-dark dark:bg-gold dark:text-ocean dark:hover:bg-gold/90 transition-colors duration-200"
         >
           View Project →
         </Link>

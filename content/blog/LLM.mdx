@@ -1,0 +1,110 @@
+---
+title: "Untitled Post"
+description: "Untitled Post — blog post"
+date: "2025-10-20"
+tags: ["blog"]
+published: true
+image: "/assets/sky_bg_f1.png"
+readTime: 2.7
+key: "coding"
+---
+
+## Introduction to Large Language Models
+
+Large Language Models (LLMs) are a type of AI systems that can understand and generate human text. They are trained on a huge amount of text data to learn grammar, context, and sometimes even reasoning abilities.
+
+They are used everywhere today – in chatbots, translation apps, coding assistants, and many other tools.
+
+## History of Large Language Models
+
+Early language models were pretty simple, such as n-grams that only looked at a few words at once. Later, neural nets and LSTMs made it possible to understand longer sentences. But everything changed when the Transformer model appeared in 2017 (*Attention is all you need!*).
+
+Then came models like **BERT**, **GPT-2**, **GPT-3**, and now **GPT-4** and many others. Each one was bigger and smarter than the previous one.
+
+## Architecture of Large Language Models
+
+### Transformer Models
+
+Transformers use *self-attention* so that each word can see other words in the sentence, instead of going one-by-one like RNNs.  
+The architecture has encoders and decoders, sometimes both, sometimes only a decoder (like GPT).
+
+**Main parts:**
+- Encoder  
+- Decoder  
+- Positional encoding (so the model knows word order)  
+- Feed-forward layers  
+
+### Attention Mechanisms
+
+Attention tells the model what parts of the input are important. The formula is:
+
+```math
+Attention(Q, K, V) = softmax(QK^T / \sqrt{d_k})V
+```
+
+…but you don’t really need to memorize it—just know that it helps the model focus on meaning.
+
+## Training Large Language Models
+
+### Data Preparation
+
+Before training, tons of text is collected, cleaned, and tokenized. Sometimes the data has noise or bias, so it must be filtered—but not all companies do it properly.
+
+### Optimization Techniques
+
+LLMs are trained on big clusters using GPUs or TPUs. Techniques like **Adam**, **gradient clipping**, and **learning rate warmup** help stabilize training.  
+Mixed precision is also used to save memory (though it can cause numeric bugs sometimes).
+
+## Applications of Large Language Models
+
+### Natural Language Processing
+
+LLMs perform translation, summarization, sentiment analysis, classification, and many other NLP tasks.  
+They replaced older models that required specialized architectures.
+
+### Creative Writing Assistance
+
+They can help write stories, poems, or even code comments. Some users say they lose creativity, but others find it helps them start faster.
+
+## Challenges and Limitations
+
+### Computational Resources
+
+Training these models needs huge GPU power and energy. Sometimes companies spend millions of dollars just to train one version.
+
+### Ethical Considerations
+
+LLMs can reproduce biased or harmful content. They may also leak private data from training sets. OpenAI and other labs try to filter results, but it’s not perfect yet.
+
+## Future Trends in Large Language Models
+
+### Advancements in Model Size
+
+Every year models become larger—but that doesn’t always mean better. Some researchers are testing smaller models with the same accuracy using smarter training methods.
+
+### Integration with Other AI Technologies
+
+LLMs are starting to combine with vision models, speech systems, and robotics to form *multimodal* AI that understands much more than text.
+
+## Conclusion
+
+Large Language Models are changing everything. They make AI talk, write, and even reason a little bit. But they still make mistakes, hallucinate, and consume huge resources.  
+The future may be about making them smaller, faster, and more ethical.
+
+## Exercises
+
+### Design a Simple Transformer Model
+
+Try to code a mini transformer with just a few attention heads and test it on a toy dataset.
+
+### Implement an Attention Mechanism
+
+Use Python and NumPy to compute attention scores manually for three tokens.
+
+### Optimize a Model Using Advanced Techniques
+
+Add gradient clipping and learning rate warmup, and see if it trains faster.
+
+### Analyze the Ethical Implications of a Large Language Model
+
+Write a short paragraph on why LLMs might be dangerous if used without proper control.

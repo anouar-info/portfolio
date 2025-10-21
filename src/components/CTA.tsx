@@ -29,7 +29,7 @@ export const CTA: React.FC<CTAProps> = ({
     href={href}
     aria-label={ariaLabel ?? label}
     className={
-      `inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold ` +
+      ` inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold ` +
       `rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-oceanLight ` +
       `transition ${className}`
     }

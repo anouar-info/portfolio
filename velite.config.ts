@@ -2,6 +2,10 @@ import { defineConfig, defineCollection, s } from "velite";
 import rehypeSlug from "rehype-slug";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
+import remarkDirective from 'remark-directive'
 
 const computedFields = <T extends { slug: string }>(data: T) => ({
   ...data,
@@ -59,6 +63,7 @@ export default defineConfig({
     rehypePlugins: [
       rehypeSlug,
       [rehypePrettyCode, { theme: "github-dark" }],
+      rehypeKatex,
       [
         rehypeAutolinkHeadings,
         {
@@ -70,6 +75,10 @@ export default defineConfig({
         },
       ],
     ],
-    remarkPlugins: [],
+    remarkPlugins: [
+      remarkGfm,
+      remarkMath,
+      remarkDirective,
+    ],
   },
 });
